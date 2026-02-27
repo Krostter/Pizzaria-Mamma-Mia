@@ -85,7 +85,7 @@ nav button {
     background-color: #f9f9f9; 
     padding: 15px;
     margin: 10px 0;
-    min-height: 80px; 
+    height: 150px;
 }
 
 .card-content h3 {
@@ -101,7 +101,7 @@ nav button {
 
 .ingredients-text {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     font-size: 15px;
 }
 
@@ -186,3 +186,70 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #555;
 }
+
+
+
+.cart-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+  gap: 1.5rem;
+}
+
+
+.cart-item img {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.cart-item p {
+  margin: 0;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+
+.counter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter-buttons button {
+  padding: 5px 12px;
+  border: 1px solid #000;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.counter-buttons button:hover {
+  background: #f0f0f0;
+}
+
+
+.btn-pay {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.btn-pay:hover {
+  background-color: #333;
+}
+

@@ -1,4 +1,5 @@
 const CardPizza = ({ name, price, ingredients, img }) => {
+
     return (
         <div className="card-pizza">
             <img src={img} alt={name} className="pizza-img" />
@@ -6,8 +7,14 @@ const CardPizza = ({ name, price, ingredients, img }) => {
                 <h3>Pizza {name}</h3>
                 
                 <div className="card-ingredients">
-                    <p className="ingredients-title">Ingredientes:</p>
-                    <p className="ingredients-text">🍕 {ingredients.join(", ")}</p>
+                    <p className="ingredients-title">🍕Ingredientes:</p>
+
+                    <ul className="ingredients-text">
+                        {ingredients.map((ingredient, index) => (
+                            <li key={index}>{ingredient}</li>
+                        ))}
+                    </ul>
+
                 </div>
 
                 <h4 className="price">Precio: ${price.toLocaleString()}</h4>
@@ -16,6 +23,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
                     <button className="btn-view">Ver más 👀</button>
                     <button className="btn-add">Añadir 🛒</button>
                 </div>
+                
             </div>
         </div>
     );
