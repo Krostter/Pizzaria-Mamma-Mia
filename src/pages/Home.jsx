@@ -1,9 +1,10 @@
 import {useState, useEffect} from "react";
-import Header from "./components/Header";
-import CardPizza from "./components/CardPizza";
+import Header from "../components/Header";
+import CardPizza from "../components/CardPizza";
 
 
 const Home = () => {
+
     const [pizzas, setPizzas] = useState([]);
 
     const getPizzas = async () => {
@@ -20,6 +21,7 @@ const Home = () => {
 
 
     return (
+
         <div>
         <Header />
             <div className="pizza-list">
@@ -32,9 +34,13 @@ const Home = () => {
                     img={pizza.img}
                     />
                 ))}    
+                
             </div>
+
         </div>
+
     );
+
 };
 
 export default Home;
