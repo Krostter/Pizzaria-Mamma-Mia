@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { pizzaCart } from "../pizzas";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 
 const Cart = () => {
 
-    const [cart, setCart] = useState(pizzaCart);
+    const { cart, setCart } = useContext(CartContext);
 
     const increaseCount = (id) => {
+
         setCart(cart.map((item) => 
             item.id === id ? { ...item, count: item.count + 1 } : item
         ));
@@ -16,13 +17,14 @@ const Cart = () => {
 
     const decreaseCount = (id) => {
 
-    setCart(cart
-      .map((item) =>
-        item.id === id ? { ...item, count: item.count - 1 } : item
-      )
-      .filter((item) => item.count > 0)
+      setCart(cart
 
-    );
+          .map((item) =>
+            item.id === id ? { ...item, count: item.count - 1 } : item
+          )
+          .filter((item) => item.count > 0)
+
+      );
 
   };
 

@@ -1,20 +1,24 @@
 import {useState, useEffect} from "react";
 import Header from "../components/Header";
 import CardPizza from "../components/CardPizza";
+import { fetchPizzas } from "../services/pizzasServices";   
 
 
 const Home = () => {
 
     const [pizzas, setPizzas] = useState([]);
 
-    const getPizzas = async () => {
-        const res = await fetch("http://localhost:5000/api/pizzas");
-        const data = await res.json();
-        setPizzas(data);
-    };
 
     useEffect(() => {
-        getPizzas();
+
+        const loadPizzas = async () => {
+            const data = await fetchPizzas();
+            setPizzas(data);
+        };
+
+
+        loadPizzas();
+
     }, 
     
     []);
@@ -28,6 +32,7 @@ const Home = () => {
                 {pizzas.map((pizza) => (
                     <CardPizza
                     key={pizza.id}
+                    id={pizza.id}
                     name={pizza.name}
                     price={pizza.price}
                     ingredients={pizza.ingredients}

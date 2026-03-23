@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import {Link} from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 
 
 const Navbar = () => {
-    const total = 25000;
+    const { cart } = useContext(CartContext);
+    const total = cart.reduce((acumulador, pizza) => acumulador + (pizza.price * pizza.count), 0);
     const token = true;
 
     return (
