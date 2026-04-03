@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import {Link} from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import { UserContext } from "../context/UserContext";
 
 
 const Navbar = () => {
     const { cart } = useContext(CartContext);
     const total = cart.reduce((acumulador, pizza) => acumulador + (pizza.price * pizza.count), 0);
-    const token = true;
+    const { token, logout } = useContext(UserContext);
 
     return (
         <nav className="navbar">
@@ -16,7 +17,7 @@ const Navbar = () => {
         {token ? (
             <>
             <Link to="/profile">🔓 Profile</Link>
-            <Link to="/login">🔒 Logout</Link>
+            <button onClick={logout} className="logout-btn">🔒 Logout</button>
             </>
         ) : (
             <>

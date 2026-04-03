@@ -1,9 +1,12 @@
 import { useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 
 
 const Pizza = () => {
 
     const [pizza, setPizza] = useState({});
+
+    const { id } = useParams();
 
     const getPizza = async () => {
 
@@ -15,9 +18,7 @@ const Pizza = () => {
 
     useEffect(() => {
         getPizza();
-    }, 
-    
-    []);
+    }, [id]);
 
 
     return (
