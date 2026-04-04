@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 
 function RegisterPage() {
@@ -9,7 +10,11 @@ function RegisterPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
 
 
-    const ValidarDatos = (e) => {
+    // Sacamos la función que crea el usuario en tu base de datos
+    const { register } = useContext(UserContext);
+    
+
+    const ValidarDatos = async (e) => {
         e.preventDefault();
 
         if (!email || !password || !confirmPassword) {
@@ -26,8 +31,8 @@ function RegisterPage() {
             alert("El password y la confirmación deben ser iguales.");
             return;
         }
-
-        alert("Registro exitoso");
+        // Ejecutamos el registro real y le pasamos los datos
+        await register(email, password);
 
     };
     

@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
+
 
 const LoginPage = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const ValidarDatos = (e) => {
+
+    // Extraemos la función real del backend
+    const { login } = useContext(UserContext);
+
+    // Agregamos "async" porque la petición al servidor toma tiempo
+    const ValidarDatos = async (e) => {
         e.preventDefault();
 
         if (!email || !password) {
@@ -18,8 +25,10 @@ const LoginPage = () => {
             return;
         }
 
-        alert("Login exitoso");
-    };
+        // Ejecutamos el inicio de sesión real
+        await login(email, password);
+
+    }; 
 
     return (
         <div className="login-container">
